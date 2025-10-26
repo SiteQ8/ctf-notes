@@ -1,69 +1,86 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AlEnezi CTF Notes - Complete Security Testing Suite</title><style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);color:#fff;min-height:100vh;overflow-x:hidden}
-html{scroll-behavior:smooth}
-nav{background:linear-gradient(90deg,#0c2340 0%,#1e3a8a 100%);padding:1.2rem;position:sticky;top:0;z-index:1000;border-bottom:4px solid #3b82f6;box-shadow:0 4px 15px rgba(0,0,0,.5)}
-.nav-container{max-width:2000px;margin:0 auto}
-.nav-header{font-size:1.6rem;font-weight:900;margin-bottom:0.8rem;letter-spacing:1.5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.nav-info{font-size:0.8rem;color:#93c5fd;margin-bottom:0.8rem}
-.nav-info a{color:#60a5fa;text-decoration:none}
-.tabs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:0.4rem;max-height:200px;overflow-y:auto}
-.tab-btn{background:rgba(255,255,255,.08);color:#fff;border:2px solid #3b82f6;padding:0.7rem;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.7rem;transition:all .3s;text-transform:uppercase;letter-spacing:0.5px}
-.tab-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
-.tab-btn.active{background:linear-gradient(90deg,#3b82f6 0%,#60a5fa 100%);box-shadow:0 0 20px rgba(59,130,246,.6);border-color:#60a5fa}
-.container{max-width:2000px;margin:0 auto;padding:2rem}
-header{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);padding:2.5rem;border-radius:15px;margin-bottom:2rem;text-align:center;box-shadow:0 8px 32px rgba(59,130,246,.3)}
-h1{font-size:2.3rem;margin-bottom:0.5rem;text-shadow:0 2px 8px rgba(0,0,0,.3)}
-.team-legend{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
-.legend{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem}
-.legend-box{width:20px;height:20px;border-radius:4px}
-.legend-blue{background:rgba(59,130,246,.9)}
-.legend-red{background:rgba(239,68,68,.9)}
-.legend-purple{background:rgba(168,85,247,.9)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1rem}
-.stat{background:rgba(255,255,255,.1);padding:1rem;border-radius:10px;border:2px solid rgba(255,255,255,.2)}
-.stat strong{display:block;font-size:1.8rem;color:#60a5fa}
-h2{font-size:1.8rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:3px solid #3b82f6}
-.section{display:none}
-.section.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.3rem}
-.card{background:linear-gradient(135deg,rgba(30,58,138,.45) 0%,rgba(59,130,246,.25) 100%);border-radius:12px;padding:1.3rem;border:2px solid;transition:all .3s;backdrop-filter:blur(10px)}
-.card.blue{border-color:rgba(59,130,246,.6)}
-.card.red{border-color:rgba(239,68,68,.6)}
-.card.purple{border-color:rgba(168,85,247,.6)}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(59,130,246,.4)}
-.card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:0.8rem;margin-bottom:0.8rem}
-.card-title{font-weight:700;color:#fff;font-size:0.95rem;line-height:1.3;flex:1}
-.team{display:inline-block;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.65rem;font-weight:800;text-transform:uppercase}
-.team-blue{background:rgba(59,130,246,.9);color:#fff}
-.team-red{background:rgba(239,68,68,.9);color:#fff}
-.team-purple{background:rgba(168,85,247,.9);color:#fff}
-.desc{font-size:0.85rem;color:#cbd5e1;margin:0.6rem 0;line-height:1.4}
-.cmd{background:rgba(0,0,0,.5);padding:0.9rem;border-radius:8px;font-family:'Courier New',monospace;font-size:0.8rem;color:#86efac;margin:0.8rem 0;border:1px solid rgba(59,130,246,.4);word-break:break-all;max-height:160px;overflow-y:auto}
-.copy{width:100%;background:linear-gradient(90deg,#1e3a8a 0%,#3b82f6 100%);color:#fff;border:none;padding:0.8rem;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.85rem;transition:all .3s;margin-top:0.5rem}
-.copy:hover{background:linear-gradient(90deg,#3b82f6 0%,#60a5fa 100%);transform:scale(1.02)}
-footer{background:linear-gradient(90deg,#0c2340 0%,#1e3a8a 100%);color:#fff;padding:2rem;text-align:center;margin-top:3rem;border-top:4px solid #3b82f6}
-footer a{color:#60a5fa;text-decoration:none;font-weight:600}
-.toast{position:fixed;bottom:2rem;right:2rem;background:linear-gradient(90deg,#10b981 0%,#059669 100%);color:#fff;padding:1rem 1.5rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.4);z-index:2000;display:none}
-.toast.show{display:block;animation:slideIn .3s}
-@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}
-</style></head><body>
-<nav><div class="nav-container"><div class="nav-header"> AlEnezi CTF Notes - Complete CTF/ Security Testing Guide</div><div class="nav-info"><strong>RED/BLUE/PURPLE Team Commands</strong> | CTF & Hands-on Testing | <a href="https://github.com/SiteQ8">@SiteQ8</a></div><div class="tabs-grid" id="nav"></div></div></nav>
-<div class="container"><header><h1> AlEnezi CTF Notes - Complete CTF/ Security Testing Guide</h1><p style="font-size:1.1rem;margin-top:0.5rem;">Complete collection of commands for offensive, defensive, and purple team operations</p><div class="team-legend"><div class="legend"><div class="legend-box legend-red"></div><span><strong>RED Team</strong> - Offensive</span></div><div class="legend"><div class="legend-box legend-blue"></div><span><strong>BLUE Team</strong> - Defensive</span></div><div class="legend"><div class="legend-box legend-purple"></div><span><strong>PURPLE Team</strong> - Hybrid</span></div></div><div class="stats"><div class="stat"><strong>800+</strong><span>Commands</span></div><div class="stat"><strong>10</strong><span>Categories</span></div><div class="stat"><strong>3</strong><span>Team Types</span></div><div class="stat"><strong>100%</strong><span>Working</span></div></div></header>
-<div id="home" class="section active"><h2>🎯 Welcome - Complete CTF & Security Testing Guide</h2><p style="color:#e0e7ff;margin:1rem 0;font-size:1.05rem;">This comprehensive suite contains 800+ security commands organized by team type and category. Use the tabs above to navigate.</p><div style="background:rgba(59,130,246,.1);border-left:4px solid #3b82f6;padding:1.5rem;border-radius:8px;margin:1.5rem 0;"><p style="color:#e0e7ff;margin-bottom:0.8rem;"><strong style="color:#60a5fa;">📋 Available Categories:</strong></p><ul style="color:#cbd5e1;margin-left:1.5rem;line-height:1.8;"><li><strong>🔍 OSINT</strong> - Information gathering and reconnaissance</li><li><strong>🪟 Windows</strong> - RED/BLUE/PURPLE team operations</li><li><strong>🐧 Linux</strong> - RED/BLUE/PURPLE team operations</li><li><strong>🌐 Network</strong> - Scanning and reconnaissance</li><li><strong>🕷️ Web</strong> - Web application testing</li><li><strong>⚙️ Exploitation</strong> - Exploit tools and frameworks</li><li><strong>🛡️ Defense</strong> - Security monitoring and defense</li></ul><p style="color:#e0e7ff;margin-top:1rem;"><strong style="color:#60a5fa;">👤 Author:</strong> Al Enezi | <a href="https://github.com/SiteQ8" style="color:#60a5fa;">GitHub: @SiteQ8</a> | <a href="https://www.linkedin.com/in/alenizi/" style="color:#60a5fa;">LinkedIn</a></p></div></div>
-<div id="osint" class="section"><h2>🔍 OSINT - Information Gathering</h2><div class="grid" id="grid-osint"></div></div>
-<div id="windows_red" class="section"><h2>🪟 Windows - RED Team (Offensive)</h2><div class="grid" id="grid-windows_red"></div></div>
-<div id="windows_blue" class="section"><h2>🪟 Windows - BLUE Team (Defensive)</h2><div class="grid" id="grid-windows_blue"></div></div>
-<div id="windows_purple" class="section"><h2>🪟 Windows - PURPLE Team (Hybrid)</h2><div class="grid" id="grid-windows_purple"></div></div>
-<div id="linux_red" class="section"><h2>🐧 Linux - RED Team (Offensive)</h2><div class="grid" id="grid-linux_red"></div></div>
-<div id="linux_blue" class="section"><h2>🐧 Linux - BLUE Team (Defensive)</h2><div class="grid" id="grid-linux_blue"></div></div>
-<div id="linux_purple" class="section"><h2>🐧 Linux - PURPLE Team (Hybrid)</h2><div class="grid" id="grid-linux_purple"></div></div>
-<div id="network" class="section"><h2>🌐 Network - Scanning & Reconnaissance</h2><div class="grid" id="grid-network"></div></div>
-<div id="web" class="section"><h2>🕷️ Web - Application Testing</h2><div class="grid" id="grid-web"></div></div>
-<div id="exploitation" class="section"><h2>⚙️ Exploitation - Tools & Frameworks</h2><div class="grid" id="grid-exploitation"></div></div>
-<div id="defense" class="section"><h2>🛡️ Defense - Security & Monitoring</h2><div class="grid" id="grid-defense"></div></div>
-</div>
-<div class="toast" id="toast"></div>
-<footer><p><strong>AlEnezi CTF Notes</strong> | Complete CTF/ Security Testing Guide | For Educational & Authorized Testing</p><p style="margin-top:1rem;"><a href="https://github.com/SiteQ8">GitHub</a> | <a href="https://www.linkedin.com/in/alenizi/">LinkedIn</a> | Hands-on Security Testing</p></footer>
-<script src="app.js"></script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlEnezi CTF Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-header">AlEnezi CTF Notes</div>
+            <div class="nav-info">
+                Security Commands | 
+                <a href="https://github.com/SiteQ8">GitHub: @SiteQ8</a> | 
+                <a href="https://www.linkedin.com/in/alenizi/">LinkedIn</a> | 
+                Email: Site@hotmail.com
+            </div>
+            <div class="tabs-grid" id="nav"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>AlEnezi CTF Notes</h1>
+            <p>Commands for offensive, defensive, and hybrid security testing</p>
+            
+            <div class="team-legend">
+                <div class="legend">
+                    <div class="legend-box legend-red"></div>
+                    <span>RED Team</span>
+                </div>
+                <div class="legend">
+                    <div class="legend-box legend-blue"></div>
+                    <span>BLUE Team</span>
+                </div>
+                <div class="legend">
+                    <div class="legend-box legend-purple"></div>
+                    <span>PURPLE Team</span>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <strong>400+</strong>
+                    <span>Commands</span>
+                </div>
+                <div class="stat">
+                    <strong>11</strong>
+                    <span>Categories</span>
+                </div>
+            </div>
+        </header>
+
+        <div id="home" class="section active">
+            <h2>Security Testing Commands</h2>
+            <div class="info-box">
+                <p>Complete command reference for CTF competitions and authorized security testing</p>
+                <p>Al Enezi (@SiteQ8) | Site@hotmail.com</p>
+            </div>
+        </div>
+
+        <div id="osint" class="section"><h2>OSINT - Information Gathering</h2><div class="grid" id="grid-osint"></div></div>
+        <div id="windows_red" class="section"><h2>Windows RED - Offensive</h2><div class="grid" id="grid-windows_red"></div></div>
+        <div id="windows_blue" class="section"><h2>Windows BLUE - Defensive</h2><div class="grid" id="grid-windows_blue"></div></div>
+        <div id="windows_purple" class="section"><h2>Windows PURPLE - Hybrid</h2><div class="grid" id="grid-windows_purple"></div></div>
+        <div id="linux_red" class="section"><h2>Linux RED - Offensive</h2><div class="grid" id="grid-linux_red"></div></div>
+        <div id="linux_blue" class="section"><h2>Linux BLUE - Defensive</h2><div class="grid" id="grid-linux_blue"></div></div>
+        <div id="linux_purple" class="section"><h2>Linux PURPLE - Hybrid</h2><div class="grid" id="grid-linux_purple"></div></div>
+        <div id="network" class="section"><h2>Network Scanning</h2><div class="grid" id="grid-network"></div></div>
+        <div id="web" class="section"><h2>Web Testing</h2><div class="grid" id="grid-web"></div></div>
+        <div id="exploitation" class="section"><h2>Exploitation Tools</h2><div class="grid" id="grid-exploitation"></div></div>
+        <div id="defense" class="section"><h2>Defense & Monitoring</h2><div class="grid" id="grid-defense"></div></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer>
+        <p>AlEnezi CTF Notes | Security Testing Commands</p>
+        <p><a href="https://github.com/SiteQ8">GitHub</a> | <a href="https://www.linkedin.com/in/alenizi/">LinkedIn</a></p>
+    </footer>
+
+    <script src="commands.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
