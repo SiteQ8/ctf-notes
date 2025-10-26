@@ -118,7 +118,6 @@ This suite includes everything needed for CTF competitions:
 ## ⚖️ Legal Notice
 
 For authorized security testing and educational purposes only.
-Unauthorized access to computer systems is illegal.
 
 ## 📝 License
 
