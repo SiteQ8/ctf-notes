@@ -6,7 +6,7 @@
 
 Complete collection of security commands for CTF competitions and hands-on penetration testing.
 
-## 📋 Overview
+## Overview
 
 - **800+ Security Commands** organized by category and team type
 - **Interactive Web GUI** with tab-based navigation
@@ -14,13 +14,13 @@ Complete collection of security commands for CTF competitions and hands-on penet
 - **Complete Documentation** for GitHub and reference
 - **Production Ready** - Deploy immediately
 
-## 🎯 Team Classifications
+## Team Classifications
 
 - **RED Team (Offensive)** - Penetration testing and exploitation commands
 - **BLUE Team (Defensive)** - Security monitoring and defense commands
 - **PURPLE Team (Hybrid)** - Both offensive and defensive capabilities
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 AlEnezi-CTF-Notes/
@@ -41,7 +41,7 @@ AlEnezi-CTF-Notes/
     └── [GitHub Pages ready]
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Extract ZIP file
 2. Open `docs/index.html` in web browser
@@ -49,7 +49,7 @@ AlEnezi-CTF-Notes/
 4. Click "Copy" to copy commands
 5. Paste into terminal
 
-## 📖 Command Categories
+## Command Categories
 
 ### Information Gathering (OSINT)
 - Domain reconnaissance
@@ -91,7 +91,7 @@ AlEnezi-CTF-Notes/
 - Firewall configuration
 - File integrity monitoring
 
-## 📚 Documentation
+## Documentation
 
 Each category includes:
 - Command syntax and options
@@ -99,7 +99,7 @@ Each category includes:
 - Expected output
 - Defense countermeasures
 
-## 🎓 For CTF Competitions
+## For CTF Competitions
 
 This suite includes everything needed for CTF competitions:
 - Reconnaissance commands
@@ -107,7 +107,7 @@ This suite includes everything needed for CTF competitions:
 - Post-exploitation
 - Log cleaning & OPSEC
 
-## 👨‍💻 Author
+## Author
 
 **Al Enezi** (@SiteQ8)
 - GitHub: https://github.com/SiteQ8
@@ -115,10 +115,10 @@ This suite includes everything needed for CTF competitions:
 - Cybersecurity Professional
 - CTF Competitor
 
-## ⚖️ Legal Notice
+## Legal Notice
 
 For authorized security testing and educational purposes only.
 
-## 📝 License
+## License
 
 See LICENSE.md for details.
